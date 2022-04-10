@@ -1,8 +1,11 @@
 class Dealer < Player
-  def initialize
+  def initialize(bank)
     @name = "dealer"
-    super
+    super(bank)
   end
 
+  def skip_turn
+
+  end
 
 end

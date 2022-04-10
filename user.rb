@@ -1,7 +1,7 @@
 class User < Player
-  def initalize(name)
+  def initialize(name, bank)
     @name = name
-    super
+    super(bank)
   end
 
 
