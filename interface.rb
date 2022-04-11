@@ -1,17 +1,17 @@
 class Interface
   attr_accessor :card_deck, :bank_of_player, :bank_of_dealer, :player, :dealer
 
-  loop do
-    print "Как вас зовут? "
-    name = gets.strip
-    print "Здравствуйте #{name}, сыграем в blackjack? Y/N?"
-    input = gets.strip
-    input == Y ? run_game : break
+  # loop do
+  #   print "Как вас зовут? "
+  #   name = gets.strip
+  #   print "Здравствуйте #{name}, сыграем в blackjack? Y/N?"
+  #   input = gets.strip
+  #   input.upcase == Y ? run_game : break
 
-  end
+  # end
 
   def make_game(player_name)
-    @card_deck = Cards.new
+    @card_deck = Deck.new
     @player = User.new(player_name, Bank.new)
     @dealer = Dealer.new(Bank.new)
     2.times { @player.cards << @card_deck.give_card }
@@ -21,8 +21,12 @@ class Interface
   end
 
   def show_cards
-    puts "Ваши карты: #{@player.cards.join(", ")}"
+    puts "Ваши карты: #{@player.show_cards}"
     puts "Карты диллера : * *"
+  end
+
+  def points
+    @player.cards.each
   end
 
 

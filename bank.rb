@@ -5,7 +5,7 @@ class Bank
 
   attr_accessor :bank
 
-  def initalize
+  def initialize
     @bank = 100
   end
 

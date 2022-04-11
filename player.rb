@@ -4,10 +4,8 @@ class Player
   def initialize(bank)
     @bank = bank
     @cards = []
-  end
-
-  def skip_turn
-
+    @face_cards = []
+    @points = 0
   end
 
   def add_card(card)
@@ -17,4 +15,19 @@ class Player
   def open_cards
 
   end
+
+  def points
+    @cards.each do |card|
+      if card.meaning == "A"
+
+    end
+  end
+
+  def show_cards
+    self.cards.each do |card|
+      @face_cards << card.meaning + card.suit
+    end
+    @face_cards
+  end
+
 end

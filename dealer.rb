@@ -4,8 +4,4 @@ class Dealer < Player
     super(bank)
   end
 
-  def skip_turn
-
-  end
-
 end
