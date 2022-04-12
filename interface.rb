@@ -38,6 +38,9 @@ class Interface
     2.times { dealer.add_card(card_deck) }
     player.make_bet
     dealer.make_bet
+  rescue RuntimeError => e
+    e.message
+    exit
   end
 
   def player_move
@@ -47,7 +50,7 @@ class Interface
     case input
     when 1
       dealer_move
-      player_move
+      open_cards
     when 2
       player.add_card(card_deck)
       dealer_move
@@ -75,11 +78,7 @@ class Interface
   end
 
   def dealer_move
-    if dealer.points >= 17
-      open_cards
-    elsif dealer.points < 17
-      dealer.add_card(card_deck)
-    end
+    dealer.add_card(card_deck) if dealer.count_points < 17
   end
 
   def scoring

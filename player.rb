@@ -41,6 +41,7 @@ class Player
 
   # rubocop:enable Metrics/MethodLength:
   def make_bet
+    validate!
     self.bank -= 10
   end
 
@@ -50,5 +51,9 @@ class Player
 
   def take_bank
     self.bank += 20
+  end
+
+  def validate!
+    raise 'Вы не можете больше играть, у вас нет денег' if self.bank.zero?
   end
 end
