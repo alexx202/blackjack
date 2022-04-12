@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Bank
   class << self
     attr_accessor :common_bank
@@ -11,8 +13,13 @@ class Bank
 
   def make_bet
     self.class.common_bank ||= 0
-    @bank -= 10
+    self.bank -= 10
     self.class.common_bank += 10
+  end
+
+  def take_bet
+    self.bank += 10
+    self.class.common_bank -= 10
   end
 
   def give_bank

@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class Deck
   attr_accessor :deck
 
-  CARD_MEANINGS = %w(2 3 4 5 6 7 8 9 10 J Q K A)
-  CARD_SUITS = %w(♠ ♥ ♣ ♦)
+  CARD_MEANINGS = %w[2 3 4 5 6 7 8 9 10 J Q K A].freeze
+  CARD_SUITS = %w[♠ ♥ ♣ ♦].freeze
 
   def initialize
     @deck = []
@@ -15,7 +17,6 @@ class Deck
   end
 
   def give_card
-    self.deck.pop
+    deck.pop
   end
-
 end
