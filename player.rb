@@ -20,6 +20,7 @@ class Player
     face_cards << card.meaning + card.suit
   end
 
+  # rubocop:disable Metrics/MethodLength:
   def count_points
     @points = 0
     ace = false
@@ -38,6 +39,7 @@ class Player
     @points
   end
 
+  # rubocop:enable Metrics/MethodLength:
   def make_bet
     self.bank -= 10
   end

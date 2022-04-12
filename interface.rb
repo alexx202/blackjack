@@ -3,6 +3,7 @@
 class Interface
   attr_accessor :card_deck, :player, :dealer
 
+  # rubocop:disable Metrics
   def initialize
     print 'Как вас зовут? '
     name = gets.strip
@@ -101,11 +102,13 @@ class Interface
     end
   end
 
+  # rubocop:enable Metrics
   def open_cards
     scoring
     show_player_cards
     show_dealer_cards
     puts "Ваш банк: #{player.bank}"
     puts "Банк диллера: #{dealer.bank}"
+    puts '-' * 40
   end
 end
