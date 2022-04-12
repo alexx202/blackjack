@@ -39,7 +39,7 @@ class Interface
     player.make_bet
     dealer.make_bet
   rescue RuntimeError => e
-    e.message
+    puts e.message
     exit
   end
 
@@ -58,6 +58,9 @@ class Interface
     when 3
       open_cards
     end
+  rescue RuntimeError => e
+    puts e.message
+    retry
   end
 
   def show_player_cards

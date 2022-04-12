@@ -13,8 +13,7 @@ class Player
   end
 
   def add_card(card_deck)
-    return unless cards.size < 3
-
+    validate_number_cards!
     card = card_deck.give_card
     cards << card
     face_cards << card.meaning + card.suit
@@ -41,7 +40,7 @@ class Player
 
   # rubocop:enable Metrics/MethodLength:
   def make_bet
-    validate!
+    validate_bank!
     self.bank -= 10
   end
 
@@ -53,7 +52,11 @@ class Player
     self.bank += 20
   end
 
-  def validate!
+  def validate_bank!
     raise 'Вы не можете больше играть, у вас нет денег' if self.bank.zero?
+  end
+
+  def validate_number_cards!
+    raise 'Вы не можете брать больше 3 карт' if cards.size == 3
   end
 end
