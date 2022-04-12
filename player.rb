@@ -4,7 +4,8 @@ class Player
   attr_reader :name
   attr_accessor :cards, :bank, :points, :face_cards
 
-  def initialize(bank)
+  def initialize(name, bank)
+    @name = name
     @bank = bank
     @cards = []
     @face_cards = []
@@ -12,11 +13,11 @@ class Player
   end
 
   def add_card(card_deck)
-    if cards.size < 3
-      card = card_deck.give_card
-      cards << card
-      face_cards << card.meaning + card.suit
-    end
+    return unless cards.size < 3
+
+    card = card_deck.give_card
+    cards << card
+    face_cards << card.meaning + card.suit
   end
 
   def count_points
@@ -35,5 +36,17 @@ class Player
       @points += @points + 11 < 21 ? 11 : 1
     end
     @points
+  end
+
+  def make_bet
+    self.bank -= 10
+  end
+
+  def take_bet
+    self.bank += 10
+  end
+
+  def take_bank
+    self.bank += 20
   end
 end
